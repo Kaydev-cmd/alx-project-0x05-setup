@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import ImageCard from "@/components/common/ImageCard";
+import { ImageProps } from "@/interfaces";
 
 const Home = () => {
+  const [prompt, setPrompt] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [generatedImages, setGeneratedImages] = useState<ImageProps[]>([]);
+
   const handleGenerateImage = async () => {
     console.log("Generating Images");
   };
@@ -8,7 +14,9 @@ const Home = () => {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl text-gray-700 font-bold mb-2">Image Generation App</h1>
+        <h1 className="text-4xl text-gray-700 font-bold mb-2">
+          Image Generation App
+        </h1>
         <p className="text-lg text-gray-700 mb-4">
           Generate stunning images based on your prompts!
         </p>
