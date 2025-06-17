@@ -6,9 +6,9 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-2">Image Generation App</h1>
+        <h1 className="text-4xl text-gray-700 font-bold mb-2">Image Generation App</h1>
         <p className="text-lg text-gray-700 mb-4">
           Generate stunning images based on your prompts!
         </p>
@@ -21,7 +21,7 @@ const Home = () => {
           />
           <button
             onClick={handleGenerateImage}
-            className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+            className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 cursor-pointer"
           >
             Generate
           </button>
