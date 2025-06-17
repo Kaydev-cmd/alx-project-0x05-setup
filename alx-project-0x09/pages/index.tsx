@@ -10,6 +10,7 @@ const Home = () => {
 
   const handleGenerateImage = async () => {
     console.log("Generating Images");
+    console.log(process.env.NEXT_PUBLIC_GBT_API_KEY)
   };
 
   return (
