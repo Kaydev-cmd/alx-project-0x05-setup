@@ -28,14 +28,13 @@ const Home = () => {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your prompt here..."
-            className="w-full p-3 border border-gray-300 rounded-lg mb-4 bg-white text-black placeholder-black"
+            className="w-full p-3 border border-gray-300 rounded-lg mb-4 bg-white text-black placeholder-gray-500"
           />
           <button
             onClick={handleGenerateImage}
             className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 cursor-pointer"
           >
-            {/* {isLoading ? "Loading" : "Generate Image"} */}
-            Generate
+            {isLoading ? "Loading" : "Generate Image"}
           </button>
         </div>
         {imageUrl && (
