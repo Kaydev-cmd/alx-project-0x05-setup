@@ -9,8 +9,20 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleGenerateImage = async () => {
+    setIsLoading(true);
+
+    const resp = await fetch("/api/generate-image", {
+      method: "POST",
+      body: JSON.stringify({
+        prompt,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     console.log("Generating Images");
-    console.log(process.env.NEXT_PUBLIC_GBT_API_KEY)
+    console.log(process.env.NEXT_PUBLIC_GBT_API_KEY);
   };
 
   return (
