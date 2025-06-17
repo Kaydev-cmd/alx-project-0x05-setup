@@ -12,6 +12,20 @@ const Home = () => {
         <p className="text-lg text-gray-700 mb-4">
           Generate stunning images based on your prompts!
         </p>
+
+        <div className="w-full max-w-md">
+          <input
+            type="text"
+            placeholder="Enter your prompt here..."
+            className="w-full p-3 border border-gray-300 rounded-lg mb-4"
+          />
+          <button
+            onClick={handleGenerateImage}
+            className="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+          >
+            Generate
+          </button>
+        </div>
       </div>
     </div>
   );
