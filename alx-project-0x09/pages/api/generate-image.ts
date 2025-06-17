@@ -41,5 +41,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         data?.generated_image ||
         "https://via.placeholder.com/600x400?text=Generated+Image",
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error in API route:", error);
+    return response.status(500).json({
+      error: "Internal server error",
+    });
+  }
 };
+
+export default handler;
