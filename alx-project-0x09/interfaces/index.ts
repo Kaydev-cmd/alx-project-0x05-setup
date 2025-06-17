@@ -9,7 +9,11 @@ export interface GenerateImageProps {
   prompt: string;
   width?: string;
   height?: string;
-  action: (imagePath: string) => void
+  action: (imagePath: string) => void;
 }
 
-export type ImageProps = Pick<GenerateImageProps, "imageUrl" | "prompt">
+export type ImageProps = Pick<GenerateImageProps, "imageUrl" | "prompt">;
+
+export interface RequestProps {
+  prompt: string;
+}
