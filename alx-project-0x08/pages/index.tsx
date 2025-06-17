@@ -6,6 +6,7 @@ const Home = () => {
   const [prompt, setPrompt] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
   const [generatedImages, setGeneratedImages] = useState<ImageProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleGenerateImage = async () => {
     console.log("Generating Images");
@@ -24,6 +25,8 @@ const Home = () => {
         <div className="w-full max-w-md">
           <input
             type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
             placeholder="Enter your prompt here..."
             className="w-full p-3 border border-gray-300 rounded-lg mb-4"
           />
