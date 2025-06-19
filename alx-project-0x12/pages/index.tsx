@@ -46,7 +46,7 @@ const Home = () => {
             {isLoading ? "Loading" : "Generate Image"}
           </button>
         </div>
-        {imageUrl && (
+        {responseData?.message && (
           <ImageCard
             action={() => setImageUrl(imageUrl)}
             imageUrl={imageUrl}
