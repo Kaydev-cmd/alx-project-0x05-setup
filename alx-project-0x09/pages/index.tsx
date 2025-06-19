@@ -21,8 +21,14 @@ const Home = () => {
       },
     });
 
-    console.log("Generating Images");
-    console.log(process.env.NEXT_PUBLIC_GBT_API_KEY);
+    if (!resp.ok) {
+      setIsLoading(false)
+      return
+    }
+
+    const data = await resp.json()
+    setImageUrl(data.message)
+    setIsLoading(false)
   };
 
   return (

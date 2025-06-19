@@ -1,13 +1,12 @@
 import { HEIGHT, WIDTH } from "@/constants";
 import { RequestProps } from "@/interfaces";
 import { NextApiRequest, NextApiResponse } from "next";
-import { json } from "stream/consumers";
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
-  const gbtApiKey = process.env.NEXT_PUBLIC_GBT_API_KEY;
-  const gbtUrl = "https://chatgpt-42.p.rapidapi.com/texttoimage";
+  const gptApiKey = process.env.NEXT_PUBLIC_GPT_API_KEY;
+  const gptUrl = "https://chatgpt-42.p.rapidapi.com/texttoimage";
 
-  if (!gbtApiKey || !gbtUrl) {
+  if (!gptApiKey || !gptUrl) {
     return response
       .status(500)
       .json({ error: "API key or URL is missing in environment variables" });
@@ -16,7 +15,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   try {
     const { prompt }: RequestProps = request.body;
 
-    const res = await fetch(gbtUrl, {
+    const res = await fetch(gptUrl, {
       method: "POST",
       body: JSON.stringify({
         text: prompt,
@@ -24,7 +23,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         height: HEIGHT,
       }),
       headers: {
-        "x-rapidapi-key": gbtApiKey.trim(),
+        "x-rapidapi-key": gptApiKey.trim(),
         "x-rapidapi-host": "chatgpt-42.p.rapidapi.com",
         "Content-Type": "application/json",
       },
@@ -37,7 +36,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     const data = await res.json();
 
     return response.status(200).json({
-      messsage:
+      message:
         data?.generated_image ||
         "https://via.placeholder.com/600x400?text=Generated+Image",
     });
