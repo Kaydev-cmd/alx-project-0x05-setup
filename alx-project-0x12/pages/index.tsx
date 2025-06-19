@@ -1,39 +1,18 @@
 import React, { useState } from "react";
 import ImageCard from "@/components/common/ImageCard";
 import { ImageProps } from "@/interfaces";
-import { url } from "inspector";
+import useFetchData from "@/hooks/useFetchData";
 
 const Home = () => {
   const [prompt, setPrompt] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [generatedImages, setGeneratedImages] = useState<ImageProps[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isLoading, responseData, generatedImages, fetchData } = useFetchData<
+    any,
+    { prompt: string }
+  >();
 
   const handleGenerateImage = async () => {
-    setIsLoading(true);
-
-    const resp = await fetch("/api/generate-image", {
-      method: "POST",
-      body: JSON.stringify({
-        prompt,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!resp.ok) {
-      setIsLoading(false);
-      return;
-    }
-
-    const data = await resp.json();
-    setIsLoading(false);
-    setImageUrl(data?.message);
-    setGeneratedImages((prev) => [
-      ...prev,
-      { imageUrl: data?.message, prompt },
-    ]);
+    fetchData("/api/generate-image", { prompt });
   };
 
   return (
