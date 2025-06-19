@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageCard from "@/components/common/ImageCard";
 import { ImageProps } from "@/interfaces";
 import useFetchData from "@/hooks/useFetchData";
@@ -14,6 +14,12 @@ const Home = () => {
   const handleGenerateImage = async () => {
     fetchData("/api/generate-image", { prompt });
   };
+
+  useEffect(() => {
+    if (!isLoading) {
+      setImageUrl(responseData?.message);
+    }
+  }, [isLoading]);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
